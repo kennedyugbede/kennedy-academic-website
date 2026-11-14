@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,23 +27,62 @@
 
 <section>
 <h3>1. Personal Academic Website</h3>
-<button class="project-button">View Details</button>
-<p hidden>This project demonstrates my ability to build and design websites using HTML, CSS and JavaScript.</p>
-<p>A personal website developed with HTML, CSS and JavaScript to showcase my education, skills, interests and achievements.</p>
+<p>A personal website developed with HTML, CSS and JavaScript to showcase my education, interests, achievements and learning journey.</p>
+
+<button class="project-button" aria-expanded="false">
+View Details
+</button>
+
+<div class="project-details" hidden>
+<h4>Project Details</h4>
+<ul>
+<li>Created different website pages using HTML.</li>
+<li>Used CSS to improve the website's appearance and layout.</li>
+<li>Applied JavaScript to introduce interactive features.</li>
+<li>Organised personal and academic information into separate sections.</li>
+</ul>
+<p><strong>Skills:</strong> HTML, CSS and JavaScript.</p>
+</div>
 </section>
 
 <section>
 <h3>2. Cybersecurity Learning</h3>
-<button class="project-button">View Details</button>
-<p hidden>This project highlights my learning in cybersecurity, computer security and ethical hacking.</p>
-<p>My ongoing learning journey in cybersecurity, including computer security concepts and ethical hacking.</p>
+<p>An ongoing learning activity focused on understanding cybersecurity, computer security and ethical hacking.</p>
+
+<button class="project-button" aria-expanded="false">
+View Details
+</button>
+
+<div class="project-details" hidden>
+<h4>Learning Activities</h4>
+<ul>
+<li>Studying information security principles.</li>
+<li>Learning about network security and vulnerabilities.</li>
+<li>Exploring cybersecurity frameworks and security tools.</li>
+<li>Developing knowledge of ethical hacking and responsible security practices.</li>
+</ul>
+<p><strong>Focus:</strong> Cybersecurity concepts, network security and ethical hacking.</p>
+</div>
 </section>
 
 <section>
-    <h3>3. Programming Practice</h3>
-    <button class="project-button">View Details</button>
-<p hidden>This project showcases my practical programming exercises using HTML, CSS and C programming.</p>
-<p>My practical learning activities in programming, including HTML and C programming.</p>
+<h3>3. Programming Practice</h3>
+<p>Practical learning activities involving programming concepts and developing basic coding skills.</p>
+
+<button class="project-button" aria-expanded="false">
+View Details
+</button>
+
+<div class="project-details" hidden>
+<h4>Practice Activities</h4>
+<ul>
+<li>Learning HTML page structure and elements.</li>
+<li>Practising CSS styling and website layouts.</li>
+<li>Understanding JavaScript fundamentals.</li>
+<li>Learning basic C programming concepts.</li>
+</ul>
+<p><strong>Skills:</strong> HTML, CSS, JavaScript and C programming.</p>
+</div>
 </section>
 
 </main>
@@ -50,6 +90,26 @@
 <footer>
 <p>&copy; 2026 Kennedy Ugbede Agamah. All Rights Reserved.</p>
 </footer>
+
 <script src="js/script.js"></script>
+
+<script>
+const projectButtons = document.querySelectorAll(".project-button");
+
+projectButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+        const details = button.nextElementSibling;
+
+        details.hidden = !details.hidden;
+
+        button.textContent = details.hidden
+            ? "View Details"
+            : "Hide Details";
+
+        button.setAttribute("aria-expanded", !details.hidden);
+    });
+});
+</script>
+
 </body>
 </html>

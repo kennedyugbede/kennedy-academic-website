@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,120 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Academic Planner | Kennedy</title>
 <link rel="stylesheet" href="css/style.css">
+
+<style>
+.planner-section {
+    margin: 25px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.planner-section h3 {
+    margin-top: 0;
+}
+
+.task-form {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.task-form input,
+.task-form button {
+    padding: 12px;
+    font-size: 15px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px;
+    margin: 10px 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.task-info {
+    flex: 1;
+    min-width: 180px;
+}
+
+.task-info small {
+    display: block;
+    margin-top: 5px;
+    color: #555;
+}
+
+.task-completed {
+    text-decoration: line-through;
+    color: #777;
+}
+
+.delete-button {
+    background: #b22222;
+    color: white;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.progress-track {
+    width: 100%;
+    height: 12px;
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #228b22;
+    transition: width 0.3s;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.planner-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.planner-table th,
+.planner-table td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: left;
+}
+
+.planner-table th {
+    background: #17365d;
+    color: white;
+}
+
+.planner-table tr:nth-child(even) {
+    background: #edf2f7;
+}
+
+@media (max-width: 600px) {
+    .planner-section {
+        padding: 12px;
+    }
+}
+</style>
 </head>
+
 <body>
 
 <header>
@@ -22,59 +136,251 @@
 </nav>
 
 <main>
+
 <h2>My Study Schedule</h2>
+<p>Welcome to my academic planner. This platform helps me organise my studies, manage academic tasks and monitor my learning progress.</p>
 
-<h3>Academic Tasks</h3>
+<section class="planner-section">
+<h3>Academic Tasks and Activities</h3>
 
+<form id="taskForm" class="task-form">
 
-<form id="taskForm">
-    <input type="text" id="taskInput" placeholder="Enter a study task" required>
-    <button type="submit">Add Task</button>
-    </form>
-    
-<ul id="taskList">
-    <li>Attend lectures and take notes.</li>
-    <li>Complete assignments and assessments.</li>
-    <li>Study cybersecurity and programming.</li>
-    <li>Prepare for examinations.</li>
+<label for="taskInput">Task Description</label>
+<input type="text" id="taskInput" placeholder="Enter a study task" required>
+
+<label for="taskDate">Due Date</label>
+<input type="date" id="taskDate">
+
+<label for="taskTime">Study Time</label>
+<input type="time" id="taskTime">
+
+<button type="submit">Add Task</button>
+
+</form>
+
+<h3>My Task List</h3>
+
+<p id="emptyMessage">No additional tasks yet. Add your first study task above.</p>
+
+<ul id="taskList" style="list-style:none; padding:0;"></ul>
+
+<h3>Study Progress</h3>
+<p id="progressText">0 of 0 tasks completed (0%)</p>
+
+<div class="progress-track">
+<div id="progressFill" class="progress-fill"></div>
+</div>
+
+</section>
+
+<section class="planner-section">
+<h3>My Academic Goals</h3>
+
+<ul>
+<li>Improve my programming and problem-solving skills.</li>
+<li>Develop practical cybersecurity knowledge.</li>
+<li>Understand ethical hacking and information security.</li>
+<li>Complete assignments and academic assessments on time.</li>
+<li>Maintain consistent academic performance.</li>
+<li>Continue learning and developing technology skills.</li>
 </ul>
+</section>
 
-    <h3>My Academic Goals</h3>
-<p>Improve my programming skills, develop cybersecurity knowledge and maintain good academic performance.</p>
-
+<section class="planner-section">
 <h3>Weekly Study Plan</h3>
-<table>
+
+<p>This timetable provides a suggested weekly routine for academic study and personal development.</p>
+
+<div class="table-container">
+<table class="planner-table">
+
+<thead>
 <tr>
 <th>Day</th>
-<th>Activity</th>
+<th>Study Activity</th>
+<th>Time</th>
 </tr>
+</thead>
+
+<tbody>
 <tr>
 <td>Monday</td>
 <td>Cybersecurity Studies</td>
+<td>9:00 AM – 11:00 AM</td>
 </tr>
+
 <tr>
 <td>Tuesday</td>
 <td>Programming Practice</td>
+<td>9:00 AM – 11:00 AM</td>
 </tr>
+
 <tr>
 <td>Wednesday</td>
 <td>Assignments and Research</td>
+<td>10:00 AM – 12:00 PM</td>
 </tr>
+
 <tr>
 <td>Thursday</td>
-<td>Computer Studies</td>
+<td>Practical Security Exercises</td>
+<td>9:00 AM – 11:00 AM</td>
 </tr>
+
 <tr>
 <td>Friday</td>
-<td>Revision and Practice</td>
+<td>Revision and Academic Practice</td>
+<td>10:00 AM – 12:00 PM</td>
 </tr>
+
+<tr>
+<td>Saturday</td>
+<td>Projects and Practical Learning</td>
+<td>10:00 AM – 1:00 PM</td>
+</tr>
+
+<tr>
+<td>Sunday</td>
+<td>Weekly Review and Planning</td>
+<td>4:00 PM – 5:00 PM</td>
+</tr>
+</tbody>
+
 </table>
+</div>
+</section>
 
 </main>
 
 <footer>
 <p>&copy; 2026 Kennedy Ugbede Agamah. All Rights Reserved.</p>
 </footer>
-<script src="js/script.js"></script>
+
+<script>
+const taskForm = document.getElementById("taskForm");
+const taskInput = document.getElementById("taskInput");
+const taskDate = document.getElementById("taskDate");
+const taskTime = document.getElementById("taskTime");
+const taskList = document.getElementById("taskList");
+const emptyMessage = document.getElementById("emptyMessage");
+const progressText = document.getElementById("progressText");
+const progressFill = document.getElementById("progressFill");
+
+let tasks = [];
+
+try {
+    tasks = JSON.parse(localStorage.getItem("academicTasks")) || [];
+} catch (error) {
+    tasks = [];
+}
+
+function saveTasks() {
+    localStorage.setItem("academicTasks", JSON.stringify(tasks));
+}
+
+function displayTasks() {
+    taskList.innerHTML = "";
+
+    const completedTasks = tasks.filter(task => task.completed).length;
+    const totalTasks = tasks.length;
+
+    const percentage = totalTasks === 0
+        ? 0
+        : Math.round((completedTasks / totalTasks) * 100);
+
+    progressText.textContent =
+        completedTasks + " of " + totalTasks +
+        " tasks completed (" + percentage + "%)";
+
+    progressFill.style.width = percentage + "%";
+
+    emptyMessage.hidden = totalTasks !== 0;
+
+    tasks.forEach(function(task, index) {
+        const item = document.createElement("li");
+        item.className = "task-item";
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = task.completed;
+
+        checkbox.addEventListener("change", function() {
+            tasks[index].completed = checkbox.checked;
+            saveTasks();
+            displayTasks();
+        });
+
+        const taskInfo = document.createElement("div");
+        taskInfo.className = "task-info";
+
+        const taskName = document.createElement("span");
+        taskName.textContent = task.name;
+
+        if (task.completed) {
+            taskName.classList.add("task-completed");
+        }
+
+        const taskDetails = document.createElement("small");
+
+        const details = [];
+
+        if (task.date) {
+            details.push("Due: " + task.date);
+        }
+
+        if (task.time) {
+            details.push("Time: " + task.time);
+        }
+
+        taskDetails.textContent =
+            details.length ? details.join(" | ") : "No date or time set";
+
+        taskInfo.appendChild(taskName);
+        taskInfo.appendChild(taskDetails);
+
+        const deleteButton = document.createElement("button");
+        deleteButton.type = "button";
+        deleteButton.textContent = "Delete";
+        deleteButton.className = "delete-button";
+
+        deleteButton.addEventListener("click", function() {
+            tasks.splice(index, 1);
+            saveTasks();
+            displayTasks();
+        });
+
+        item.appendChild(checkbox);
+        item.appendChild(taskInfo);
+        item.appendChild(deleteButton);
+
+        taskList.appendChild(item);
+    });
+}
+
+taskForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const taskName = taskInput.value.trim();
+
+    if (taskName === "") {
+        return;
+    }
+
+    tasks.push({
+        name: taskName,
+        date: taskDate.value,
+        time: taskTime.value,
+        completed: false
+    });
+
+    saveTasks();
+    displayTasks();
+
+    taskForm.reset();
+});
+
+displayTasks();
+</script>
+
 </body>
 </html>
